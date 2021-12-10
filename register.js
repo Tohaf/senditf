@@ -25,7 +25,7 @@ function sendData(e) {
 
     const XHR = new XMLHttpRequest();
 
-    XHR.open('POST', ' http://localhost:5000/register/pass', true);
+    XHR.open('POST', ' https://web-app-senditb.herokuapp.com/register/pass', true);
 
     XHR.setRequestHeader('Content-Type', 'applicaion/json; charset=UTF-8');
     XHR.setRequestHeader('authorisation',   'Bearer ' + username.accessToken);

@@ -21,7 +21,7 @@ window.addEventListener('load', function () {
 
         const XHR = new XMLHttpRequest();
 
-        XHR.open('POST', 'http://localhost:5000/register/login', true);
+        XHR.open('POST', 'https://web-app-senditb.herokuapp.com/register/login', true);
         XHR.setRequestHeader('Content-type', 'appliction/json; charset=utf-8');
         XHR.setRequestHeader('authorisation',   'Bearer ' + username.accessToken);
 

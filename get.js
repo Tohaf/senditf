@@ -7,7 +7,7 @@ function getAllParcel(e) {
 
     var xhr = new XMLHttpRequest();
 
-    xhr.open('GET', 'http://localhost:5000/parcel/:id/search?name=' + val);
+    xhr.open('GET', 'https://web-app-senditb.herokuapp.com/parcel/:id/search?name=' + val);
 
     xhr.onload = function () {
 
