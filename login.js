@@ -33,7 +33,7 @@ window.addEventListener('load', function () {
             
            console.log(output);
 
-           window.document.location = '/post.html'
+           window.document.location = "post.html"
     
 
         };
