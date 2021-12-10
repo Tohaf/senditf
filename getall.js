@@ -5,7 +5,7 @@ form.addEventListener('submit', getAllParcel);
 function getAllParcel (e) {
     e.preventDefault();
 
-    fetch(" https://web-app-senditb.herokuapp.com/parcel/getall").then(response => response.json()).then(data => {
+    fetch(" http://localhost:5000/parcel/getall").then(response => response.json()).then(data => {
         var output ;
         for (var i in data){
             output += '<ul>' +
@@ -17,7 +17,7 @@ function getAllParcel (e) {
             '<li>Status: '+data[i].status+'</li>'+
             '<li>id: '+data[i]._id+'</li>'+
 
-            '<form action=" https://web-app-senditb.herokuapp.com/parcel/'+data[i]._id+'/cancel" id="ourForm" method="DELETE" >'+
+            '<form action=" http://localhost:5000/parcel/'+data[i]._id+'/cancel" id="ourForm" method="DELETE" >'+
 
                 '<button id="btn" type="submit"> Delete </button>'+
                

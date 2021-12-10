@@ -10,7 +10,6 @@ window.addEventListener('load', function () {
         var username = document.getElementById('username').value;
         var password = document.getElementById('password').value;
 
-
         var params = JSON.stringify({
             
             "password": password,
@@ -22,32 +21,24 @@ window.addEventListener('load', function () {
 
         const XHR = new XMLHttpRequest();
 
-        XHR.open('POST', ' https://web-app-senditb.herokuapp.com/register/login', true);
+        XHR.open('POST', 'http://localhost:5000/register/login', true);
+        XHR.setRequestHeader('Content-type', 'appliction/json; charset=utf-8');
+        XHR.setRequestHeader('authorisation',   'Bearer ' + username.accessToken);
+
 
         XHR.onload = function () {
             var output = this.responseText;
 
             var display = document.getElementById('dis');
             
-            display.innerHTML = `
-            <br>
-            <div> ${output} </div> 
-            <br>
-            <h3> welcome  ${username}  to our parcel delivery website </h3>
-            
-            `
-            window.document.location = "insert.html"
-            console.table(output);
+           console.log(output);
+
+           window.document.location = '/get.html'
+    
 
         };
 
-
-        XHR.setRequestHeader('Content-type', 'appliction/json; charset=utf-8');
-
-
         XHR.send(val);
-
-        
 
     }
 

@@ -6,8 +6,8 @@ form.addEventListener('submit', sendData);
 function sendData(e) {
     e.preventDefault();
 
-    var firstname = document.getElementById('Firstname').value;
-    var lastname = document.getElementById('Lastname').value;
+    var firstname = document.getElementById('firstname').value;
+    var lastname = document.getElementById('lastname').value;
     var email = document.getElementById('email').value;
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
@@ -25,9 +25,10 @@ function sendData(e) {
 
     const XHR = new XMLHttpRequest();
 
-    XHR.open('POST', ' https://web-app-senditb.herokuapp.com/register/pass', true);
+    XHR.open('POST', ' http://localhost:5000/register/pass', true);
 
     XHR.setRequestHeader('Content-Type', 'applicaion/json; charset=UTF-8');
+    XHR.setRequestHeader('authorisation',   'Bearer ' + username.accessToken);
 
     XHR.onload = function () {
         const value = this.responseText;
@@ -38,8 +39,8 @@ function sendData(e) {
         <br>
         <div>${value}</div>
         <div>Username: ${username}</div>
-        <divFirstname: >${firstname}</div>
-        <divLastname: >${lastname}</div>
+        <div>Firstname:${firstname}</div>
+        <div>Lastname:${lastname}</div>
         <div>Password: ${password}</div>
         <div>Email: ${email}</div>
          <br>

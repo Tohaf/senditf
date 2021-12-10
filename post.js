@@ -37,6 +37,7 @@
             var display = document.getElementById('dis');
 
             let neti = out;
+        
 
             display.innerHTML = `
             <br>

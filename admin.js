@@ -22,29 +22,30 @@ window.addEventListener('load', function () {
 
         const XHR = new XMLHttpRequest();
 
-        XHR.open('POST', ' https://web-app-senditb.herokuapp.com/admin/add', true);
+        XHR.open('POST', ' http://localhost:5000/admin/add', true);
 
-        XHR.onload = function () {
-            var output = this.responseText;
+        if (username == 'toheeb' && password === 'toye'){
+    
+            XHR.onload = function (e) {
+                e.preventDefault();
+                var output = this.responseText;
+    
+                
+                console.log(output)
 
+                window.document.location = "getall.html"
+    
+    
+            }
+    
+
+        }else{
             var display = document.getElementById('dis');
-            
-            display.innerHTML = `
-            <br>
-            <div> ${output} </div> 
-            <br>
-            <h3> welcome  ${username}  to our parcel delivery website </h3>
-            
-            `
-            window.document.location = "getall.html"
-            console.log(output);
 
-
-        };
-
-
-        XHR.setRequestHeader('Content-type', 'appliction/json; charset=utf-8');
-
+            display.innerHTML = "username or password not correct"
+                
+            console.log('failed password or username')
+        }
 
         XHR.send(val);
 
