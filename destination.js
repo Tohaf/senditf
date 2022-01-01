@@ -21,13 +21,13 @@ function sendData(e) {
 
     const XHR = new XMLHttpRequest();
 
-    XHR.open('PUT', ' https://web-app-senditb.herokuapp.com/parcel/'+id+'/destination', true);
+    XHR.open('PUT', 'http://localhost:5000/parcel/'+id+'/destination', true);
 
     XHR.onload = function () { 
 
         var out1 = this.responseText;
         
-        display.innerHTML = out1;
+        window.document.location = 'get.html';
 
         console.log(out1);
 

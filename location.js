@@ -21,7 +21,7 @@ function sendData(e) {
 
     const XHR = new XMLHttpRequest();
 
-    XHR.open('PUT', ' https://web-app-senditb.herokuapp.com/parcel/'+id+'/location', true);
+    XHR.open('PUT', 'http://localhost:5000/parcel/'+id+'/location', true);
     XHR.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     XHR.setRequestHeader('Method', 'PUT');
 
@@ -29,10 +29,11 @@ function sendData(e) {
     XHR.onload = function () { 
 
         var out1 = this.responseText;
+        window.document.location = 'get.html';
         
-        display.innerHTML = out1;
 
         console.log(out1);
+       
 
     };
 

@@ -1,4 +1,4 @@
-window.addEventListener('load', function () {
+
 
     var form = document.getElementById('myForm');
 
@@ -7,44 +7,43 @@ window.addEventListener('load', function () {
     function sendData(e) {
         e.preventDefault();
        
-        var username = document.getElementById('username').value;
+        var email = document.getElementById('email').value;
         var password = document.getElementById('password').value;
 
         var params = JSON.stringify({
             
             "password": password,
-            "username": username
+            "email": email
            
         });
 
-        var val = params;
+        const result = fetch('http://localhost:5000/admin/login', {
+            method: 'POST',
+            body: (params),
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        }).then( response => response.json())
 
-        const XHR = new XMLHttpRequest();
+        .then((data) => {
+            const deta = document.getElementById('dis');
 
-        XHR.open('POST', 'https://web-app-senditb.herokuapp.com/register/login', true);
-        XHR.setRequestHeader('Content-type', 'appliction/json; charset=utf-8');
-        XHR.setRequestHeader('authorisation',   'Bearer ' + username.accessToken);
+            if (data.status === 'error') {
+                deta.innerHTML = 'Invalid Email/password';
+            } else if(email === 'lmn@gmail.com' && password === 'toheeb'){
+              window.document.location= 'getall.html';
 
-
-        XHR.onload = function () {
-            var output = this.responseText;
-
-            var display = document.getElementById('dis');
-            
-           console.log(output);
-
-           window.document.location = "post.html"
-    
-
-        };
-
-        XHR.send(val);
-
+            }else{
+                
+                window.document.location = 'post.html';
+                
+                console.log(data);
+                localStorage.setItem('token', JSON.stringify(data));
+                
+            }    
+        });
+   
     }
-
-
-});
-
 
 
 

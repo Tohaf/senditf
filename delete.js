@@ -6,10 +6,10 @@ function deleteData(e) {
 
     var xhr = new XMLHttpRequest();
 
-    xhr.open('DELETE', ` https://web-app-senditb.herokuapp.com/parcel/${id}/cancel`);
+    xhr.open('DELETE', `http://localhost:5000/parcel/${id}/cancel`);
 
     xhr.addEventListener('load', function () {
-        console.log('succesful');
+        
         window.document.location = "get.html"
     });
 

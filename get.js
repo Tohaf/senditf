@@ -7,7 +7,7 @@ function getAllParcel(e) {
 
     var xhr = new XMLHttpRequest();
 
-    xhr.open('GET', 'https://web-app-senditb.herokuapp.com/parcel/:id/search?name=' + val);
+    xhr.open('GET', 'http://localhost:5000/parcel/:id/search?name=' + val);
 
     xhr.onload = function () {
 
@@ -20,14 +20,13 @@ function getAllParcel(e) {
         for (var i in out) {
            
             output += '<ul>' +
-                '<li>username: ' + out[i].name + '</li>' +
-                '<li>password: ' + out[i].password + '</li>' +
+                '<li>Name: ' + out[i].name + '</li>' +
                 '<li>Email: ' + out[i].email + '</li>' +
                 '<li>Destination: ' + out[i].destination + '</li>' +
                 '<li>Location: ' + out[i].location + '</li>' +
-                '<li>Status: ' + out[i].status + '</li>' +
+                '<li>Status: ' + 'in progress' + '</li>' +
                 '<li>id: '+out[i]._id+'</li>'+
-                '<form action=" https://web-app-senditb.herokuapp.com/parcel/'+out[i]._id+'/cancel" id="ourForm" method="DELETE" >' +
+                '<form action="http://localhost:5000/parcel/'+out[i]._id+'/cancel" id="ourForm" method="DELETE" >' +
 
                 '<button id="btn" type="submit"> Delete </button>' +
  

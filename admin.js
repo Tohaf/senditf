@@ -7,14 +7,14 @@ window.addEventListener('load', function () {
     function sendData(e) {
         e.preventDefault();
        
-        var username = document.getElementById('username').value;
+        var email = document.getElementById('email').value;
         var password = document.getElementById('password').value;
 
 
         var params = JSON.stringify({
             
             "password": password,
-            "username": username
+            "email": email
            
         });
 
@@ -22,9 +22,9 @@ window.addEventListener('load', function () {
 
         const XHR = new XMLHttpRequest();
 
-        XHR.open('POST', ' https://web-app-senditb.herokuapp.com/admin/add', true);
+        XHR.open('POST', ' http://localhost:5000/admin/add', true);
 
-        if (username == 'toheeb' && password === 'toye'){
+        if (email == 'w@gmail.com' && password === 'toye'){
     
             XHR.onload = function (e) {
                 e.preventDefault();

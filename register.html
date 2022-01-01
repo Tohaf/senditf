@@ -11,54 +11,62 @@
 <body>
 
     <form action="register.js"  id="mForm" method="POST">
-        <div>
-            <label for="firstname"> Firstname</label>
-            <input type="text" id="firstname" name="firstname" required>
-        </div>
+        <div class="set2">
+            <label for="nama"> Firstname</label>
+            <input type="text" id="nama" name="nama" required>
+        
 
         <br>
 
-        <div>
-            <label for="lastname"> Lastname</label>
-            <input type="text" id="lastname" name="lastname" required>
-        </div>
+    
+            <label for="namo"> Lastname</label>
+            <input type="string" id="namo" name="namo" required>
+    
 
         <br>
 
-        <div>
-            <label for="username"> Username</label>
-            <input type="text" id="username" name="username" required>
-        </div>
-
-        <br>
-
-        <div>
+        
             <label for="password"> password</label>
-            <input type="text" id="password" name="password" required>
-        </div>
+            <input type="password" id="password" name="password" required>
+        
+        <br>
+        
+            <label for="confirmPassword"> confirm password</label>
+            <input type="confirmPassword" id="confirmPassword" name="confirmPassword" required>
+        
 
         <br>
 
-        <div>
+        
             <label for="email"> email</label>
             <input type="email" id="email" name="email" required>
-        </div>
+        
         <br>
 
-        <div>
-            <button type="submit" target="blank">signup</button>
+    
+            <button type="submit" >signup</button>
+            <br>
+            <a href="login.html"> login user</a>
+
         </div>
     </form>
+    <br>
+
+    <div id="det">
+
+    </div>
+    
+    <div id="dat">
+
+    </div>
+    
+    <script src="register.js"></script>
+    
 
 </body>
 
-<div id="det">
-
-</div>
-
-<script src="register.js"></script>
 
 </html>
 
 
-<a href="login.html"> login user</a>
+
