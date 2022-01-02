@@ -24,7 +24,7 @@ function sendData(event) {
     });
     
 
-    const result = fetch('http://localhost:5000/admin/pass', {
+    const result = fetch('https://web-app-senditb.herokuapp.com/admin/pass', {
         method: 'POST',
         body: (params),
         headers: {

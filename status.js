@@ -21,7 +21,7 @@ function sendData(e) {
 
     const XHR = new XMLHttpRequest();
 
-    XHR.open('PUT', 'http://localhost:5000/parcel/'+id+'/status', true);
+    XHR.open('PUT', 'https://web-app-senditb.herokuapp.com/parcel/'+id+'/status', true);
     XHR.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     XHR.setRequestHeader('Method', 'PUT');
 
