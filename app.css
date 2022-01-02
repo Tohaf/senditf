@@ -3,167 +3,47 @@
 * {
     background-image: url(image.jpg) ;
 }
-.dass{
-    margin-left: 30%;
-    margin-top: 50px;     
-}
+
 
 .das{
     margin-left: 30%;
     margin-top: 50px;     
 }
-.das > h1{
+.das  h1{
     padding-left: 50px;
 }
-.das > h2{
+.das  h2{
     padding-left: 180px;
 }
 .reg{
     justify-content: center;
-    width: 50%;
+    width: 100%;
 }
-.reg > a{
+.reg  a{
     padding-left: 250px;
 }
-.das > h3{
+.das  h3{
     padding-left: 130px;
 }
-.das > a{
+.das  a{
     padding-left: 250px;
 }
-.forma{
-    margin: auto;
+
+form {
+    margin-left: 700px;
+    
+    
+}
+label{
+    display: block;
 
 }
-.set{
-    margin-top: 50px;
-}
-.set > input{
-    margin: auto;
-    margin-top: 0px;
+input{
     display: block;
 }
 
-.set > label{
-    padding-left: 750px;
 
-}
-.set > button{
-    margin-left: 750px;
-
-}
-.set1{
-    margin-top: 50px;
-}
-.set1 > input{
-    margin: auto;
-    margin-top: 0px;
+button{
     display: block;
-}
-
-.set1 > label{
-    padding-left: 750px;
 
 }
-.set1 > button{
-    margin-left: 750px;
-
-}
-.set2 > input{
-    margin: auto;
-    margin-top: 0px;
-    display: block;
-}
-
-.set2 > label{
-    padding-left: 750px;
-
-}
-.set2 > button{
-    margin-left: 750px;
-
-}
-.set2 > a{
-    margin-left: 750px;
-    margin-top: 20px;
-
-}
-.set3 > input{
-    margin: auto;
-    margin-top: 0px;
-    display: block;
-}
-
-.set3 > label{
-    padding-left: 750px;
-
-}
-.set3 > button{
-    margin-left: 750px;
-
-}
-.set3 > a{
-    margin-left: 720px;
-    margin-top: 20px;
-
-}
-.set4 > input{
-    margin: auto;
-    margin-top: 0px;
-    display: block;
-}
-
-.set4 > label{
-    padding-left: 750px;
-
-}
-.set4 > button{
-    margin-left: 750px;
-
-}
-.set4 > a{
-    margin-left: 720px;
-    margin-top: 20px;
-
-}
-.set5 > input{
-    margin: auto;
-    margin-top: 0px;
-    display: block;
-}
-
-.set5 > label{
-    padding-left: 750px;
-
-}
-.set5 > button{
-    margin-left: 750px;
-
-}
-.set5 > a{
-    margin-left: 720px;
-    margin-top: 20px;
-
-}
-.set6 > input{
-    margin: auto;
-    margin-top: 0px;
-    display: block;
-}
-
-.set6 > label{
-    padding-left: 750px;
-
-}
-.set6 > button{
-    margin-left: 750px;
-
-}
-.set6 > a{
-    margin-left: 720px;
-    margin-top: 20px;
-
-}
-
-
-

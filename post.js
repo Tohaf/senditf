@@ -23,7 +23,7 @@ function sendData(e) {
         
     });
 
-    const result = fetch('https://web-app-senditb.herokuapp.com/parcel', {
+    const result = fetch(' https://web-app-senditb.herokuapp.com/parcel', {
         method: 'POST',
         body: (params),
         headers: {

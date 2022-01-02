@@ -5,7 +5,7 @@ form.addEventListener('submit', getAllParcel);
 function getAllParcel (e) {
     e.preventDefault();
 
-    fetch("https://web-app-senditb.herokuapp.com/parcel/getall").then(response => response.json()).then(data => {
+    fetch(" https://web-app-senditb.herokuapp.com/parcel/getall").then(response => response.json()).then(data => {
         var output ;
         for (var i in data){
             output += '<ul>' +
