@@ -3,7 +3,9 @@
 * {
     background-image: url(image.jpg) ;
 }
-
+body{
+    text-align: center;
+}
 
 .das{
     text-align: center;  
