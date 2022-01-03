@@ -6,31 +6,12 @@
 
 
 .das{
-    margin-left: 30%;
-    margin-top: 50px;     
-}
-.das  h1{
-    padding-left: 50px;
-}
-.das  h2{
-    padding-left: 180px;
-}
-.reg{
-    justify-content: center;
-    width: 100%;
-}
-.reg  a{
-    padding-left: 250px;
-}
-.das  h3{
-    padding-left: 130px;
-}
-.das  a{
-    padding-left: 250px;
+    text-align: center;  
 }
 
 form {
-    margin-left: 700px;
+    text-align: center;
+    align-self: auto;
     
     
 }
@@ -40,10 +21,12 @@ label{
 }
 input{
     display: block;
+    margin: auto;
 }
 
 
 button{
     display: block;
+    margin: auto;
 
 }
