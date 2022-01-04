@@ -34,6 +34,7 @@ function sendData(e) {
         .then((data) => {
             var display = document.getElementById('dis');
             window.document.location = 'get.html';
+            /*
             display.innerHTML = `
         
                 <br>
@@ -45,7 +46,7 @@ function sendData(e) {
                 <div>id: ${data._id}</div>
                  <br>
                  `
-
+            */
             console.log(data);
           
         

@@ -46,7 +46,7 @@ function sendData(event) {
             <div>Firstname:${data.nama}</div>
             <div>Lastname:${data.namo}</div>
             <div>Email: ${data.email}</div>
-            <div>password: ${data.password}</div>
+        
              <br>
              `
 
