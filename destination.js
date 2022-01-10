@@ -9,7 +9,9 @@ function sendData(e) {
     e.preventDefault();
 
     var destination = document.getElementById('myDestine').value;
-    var id = document.getElementById('id').value;
+    
+    var id = localStorage.getItem('idd');
+    console.log(id)
 
     var params = JSON.stringify({
 
@@ -21,13 +23,13 @@ function sendData(e) {
 
     const XHR = new XMLHttpRequest();
 
-    XHR.open('PUT', ' https://web-app-senditb.herokuapp.com/parcel/'+id+'/destination', true);
+    XHR.open('PUT', 'https://web-app-senditb.herokuapp.com/parcel/'+id+'/destination', true);
 
     XHR.onload = function () { 
 
         var out1 = this.responseText;
         
-        window.document.location = 'get.html';
+        window.document.location = 'get.html'
 
         console.log(out1);
 

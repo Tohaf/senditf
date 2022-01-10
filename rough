@@ -1,0 +1,135 @@
+ <form action="get.js" id="myForm" method="GET">
+
+        <br>
+
+        <div class="set6">
+            <label for="myName"> Firstname </label>
+            <input id="myName" type="text" name="name" required>
+        
+
+            <br>
+            <br>   
+        
+            <button type=submit>submit</button>
+            <br>
+            <br>
+            <a href="index.html"> homepage </a>
+        </div>
+
+        
+    </form>
+
+
+
+     <div class="set6">
+                        <label for="myName"> Firstname </label>
+                        <input id="myName" type="text" name="name" required>
+                    
+            
+                        <br>
+                        <br>   
+                    
+                        <button type=submit>submit</button>
+
+
+
+
+
+                         <form action="getall.js" id="getForm" method="GET">
+        
+        <button type="submit">gell all parcel</button>
+
+        <br>
+        <br>
+        <a href="get.html"> Get all parcels by specific user </a>
+    </form>
+    <br>
+   
+
+    background-image: url(image.jpg) ;
+
+
+
+    fetch(`http://localhost:5000/parcel/${out._id}/cancel`, {
+        method: 'Delete',
+        body: (out._id),
+        headers: {
+            'Content-Type': 'application/json',
+
+        }
+    }).then(Response => Response.json())
+    .then(data => {
+        console.log(data);
+    })
+
+
+
+    let count = 0;
+            for(i=1; i<= out.length; i++){
+                if(out.status === 'delivered'){
+                    count = count++;
+                    console.log(count);
+                    document.getElementById('deliver').innerHTML = count;
+                }
+            }
+
+
+
+            var output;
+            output += '<ul>' +
+                '<li> ' + out[i].status + '</li>' +
+            '</ul>'
+
+
+
+
+            /*
+            console.log(newRow.cells.length);
+            if(ley === delivered){
+                console.log(ley.rows.length);
+            }else{
+                console.log(cell4.innerHTML.length);
+                console.log(ley.length);
+            }
+            
+            
+            count = i ;
+        
+            const ley = cell4.innerHTML;
+            for(i=1; i<= table.rows.length; i++){
+                
+                if(cell4.innerHTML === 'delivered'){
+                
+
+                    document.getElementById('deliver').innerHTML = count;
+                
+                }else if(cell4.innerHTML === 'transit'){
+                  document.getElementById('transit').innerHTML = count;  
+                }
+            }
+            */   
+
+
+
+            //<li>Number Of Orders Delivered: <span id="deliver"></span></li>
+            //<li> Number Of Orders On Transit:  <span id="transit"></span></li>
+
+            var trans = document.getElementById('transit');
+            var deli = document.getElementById('deliver');
+
+            let tra = 0;
+            let del = 0;
+            
+            
+            
+            for (i = 0; i <= row; i++) {
+                if (cell4.innerHTML != 'delivered') {
+                    
+                    trans.innerHTML = tra++,  deli.innerHTML = row--;
+                
+                } else {
+                    
+                    deli.innerHTML = del++, trans.innerHTML = tra;
+                
+                }
+            }

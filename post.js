@@ -1,29 +1,29 @@
 
 var form = document.getElementById('myForm');
+var display1 = document.getElementById("diss");
 
 form.addEventListener('submit', sendData);
 
 function sendData(e) {
     e.preventDefault();
 
-    var status = document.getElementById('status');
     var destination = document.getElementById('des').value;
     var location = document.getElementById('location').value;
     var token = JSON.parse(localStorage.getItem('token'));
     var name = token.nama;
     var email = token.email;
-    var status = localStorage.getItem('status');
+    var status = "On Transit";
 
     var params = JSON.stringify({
         "destination": destination,
         "location": location,
         "status": status,
-        "token":token,
-    
-        
+        "token": token,
+
+
     });
 
-    const result = fetch(' https://web-app-senditb.herokuapp.com/parcel', {
+    const result = fetch('https://web-app-senditb.herokuapp.com/parcel', {
         method: 'POST',
         body: (params),
         headers: {
@@ -34,7 +34,11 @@ function sendData(e) {
         .then((data) => {
             var display = document.getElementById('dis');
             window.document.location = 'get.html';
-            /*
+             display1.innerHTML = `Order successfully created ${data.name}`;
+             localStorage.setItem('value', data.name);
+             console.log(data.name);
+            
+/*
             display.innerHTML = `
         
                 <br>
@@ -45,14 +49,14 @@ function sendData(e) {
                 <div>status: ${data.status} </div>
                 <div>id: ${data._id}</div>
                  <br>
-                 `
-            */
-            console.log(data);
-          
-        
-    
-    
-    
+                 `           
+ */
+                 console.log(data);
+
+
+
+
+
         })
 
 

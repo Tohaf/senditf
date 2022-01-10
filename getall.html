@@ -9,20 +9,37 @@
 <link rel="stylesheet" href="app.css"/>
 </head>
 
-<body class="dass">
+<body onload="event.preventDefault();getAllParcel()" class="dass">
 
-   
 
-    <form action="getall.js" id="getForm" method="GET">
-        
-        <button type="submit">gell all parcel</button>
+    <table>
+        <tr>
+            <td>
+                <form  action="get.js" id="myForm" method="GET">
+                    
+                        <br>
+                        <a href="index.html"> homepage </a>
+                
+                </form>
+            
+            </td>
+            <table id='head'>
+                <thead>
+                    <tr>
+                        <th>orderid</th>
+                        <th>destination</th>
+                        <th>location</th>
+                        <th>status</th>
+                        <th>change status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id='dis'>
 
-        <br>
-        <br>
-        <a href="get.html"> Get all parcels by specific user </a>
-    </form>
-    <br>
-   
+                </tbody>
+            </table>
+        </tr>
+    </table>
     
 
 

@@ -1,12 +1,12 @@
 
-document.querySelector('#btn').addEventListener('submit', deleteData);
+document.getElementById('ourForm').addEventListener('submit', deleteData);
 
 function deleteData(e) {
     e.preventDefault();
 
     var xhr = new XMLHttpRequest();
 
-    xhr.open('DELETE', ` https://web-app-senditb.herokuapp.com/parcel/${id}/cancel`);
+    xhr.open('DELETE', `https://web-app-senditb.herokuapp.com/parcel/${id}/cancel`);
 
     xhr.addEventListener('load', function () {
         
