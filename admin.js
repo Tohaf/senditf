@@ -22,8 +22,8 @@ window.addEventListener('load', function () {
 
         const XHR = new XMLHttpRequest();
 
-        XHR.open('POST', ' http://localhost:5000/admin/add', true);
-
+        XHR.open('POST', ' https://web-app-senditb.herokuapp.com/admin/add', true);
+        
         if (email == 'w@gmail.com' && password === 'toye'){
     
             XHR.onload = function (e) {

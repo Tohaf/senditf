@@ -12,11 +12,30 @@ function getAllParcel() {
     fetch('https://web-app-senditb.herokuapp.com/parcel/:id/search?name=' + nameq)
         .then(response => response.json())
         .then((out) => {
+            var trans = document.getElementById('transit');
+            var deli = document.getElementById('deliver');
 
 
+            const deliver = out.filter((item) => {
+                return item.status === 'delivered';
+            })
+            deli.innerHTML = deliver.length;
+
+
+            const transit = out.filter((item) => {
+                return item.status === 'transit';
+            })
+            trans.innerHTML = transit.length;
+
+            
             for (var i in out) {
 
-
+                var output;
+                output += '<ul>' +
+                '<li>' + out[i].status + '</li>' +
+                '</ul>'
+                
+                
                 var table = document.getElementById("head").getElementsByTagName("tbody")[0];
                 var newRow = table.insertRow(table.length);
                 cell1 = newRow.insertCell(0);
@@ -35,15 +54,14 @@ function getAllParcel() {
 
                 var row = table.rows.length;
                 document.getElementById('order').innerHTML = row;
-                /*
-                <a  href="destination.html" id="chec" onClick="updateDestination(this)">Update Destination</a>
-                update<input  type='checkbox' id='box'  onClick="updateDestination(this)">
-                */
 
+        
             }
 
         })
 }
+
+
 
 
 function updateDestination(td) {
