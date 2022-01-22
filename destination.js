@@ -9,9 +9,11 @@ function sendData(e) {
     e.preventDefault();
 
     var destination = document.getElementById('myDestine').value;
-    
+
     var id = localStorage.getItem('idd');
     console.log(id)
+
+    var dests = localStorage.getItem('dest');
 
     var params = JSON.stringify({
 
@@ -21,25 +23,34 @@ function sendData(e) {
 
     var val = params;
 
-    const XHR = new XMLHttpRequest();
+    if (dests == 'ready for pickup' || dests === 'transit') {
+        const XHR = new XMLHttpRequest();
 
-    XHR.open('PUT', 'https://web-app-senditb.herokuapp.com/parcel/'+id+'/destination', true);
+        XHR.open('PUT', 'https://web-app-senditb.herokuapp.com/parcel/' + id + '/destination', true);
 
-    XHR.onload = function () { 
+        XHR.onload = function () {
 
-        var out1 = this.responseText;
-        
-        window.document.location = 'get.html'
+            var out1 = this.responseText;
 
-        console.log(out1);
+            window.document.location = 'get.html'
 
-    };
-    
-    
-    XHR.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-    XHR.setRequestHeader('Method', 'PUT');
+            console.log(out1);
 
-  
-    XHR.send(val);
+        };
+
+
+        XHR.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        XHR.setRequestHeader('Method', 'PUT');
+
+
+        XHR.send(val);
+    }else if(dests === 'cancelled'){
+        alert('destination cannot be updated, order already cancelled');
+        window.document.location = 'get.html';
+    }
+    else{
+        alert('destination cannot be updated, order already delivered');
+        window.document.location = 'get.html';
+    }
 
 }

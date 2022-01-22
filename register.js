@@ -43,6 +43,7 @@ function sendData(event) {
                 deta.innerHTML = `
     
             <br>
+            <div>sucessful, kindly Login</div>
             <div>Firstname:${data.nama}</div>
             <div>Lastname:${data.namo}</div>
             <div>Email: ${data.email}</div>

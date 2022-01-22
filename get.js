@@ -1,3 +1,5 @@
+document.getElementById('show').style.display = 'none';
+
 
 function getAllParcel() {
 
@@ -26,32 +28,92 @@ function getAllParcel() {
                 cell4 = newRow.insertCell(3);
                 cell4.innerHTML = `${out[i].status}`;
                 cell5 = newRow.insertCell(4);
-                cell5.innerHTML = `<a  href="destination.html" id="chec" onClick="updateDestination(this)">Update Destination</a>`;
+                cell5.innerHTML = `<a id="chec" onClick="updateDestination(this)">Update Destination</a>`;
                 cell6 = newRow.insertCell(5);
-                cell6.innerHTML = `<button onClick="deleteData(this)">Delete</button>`;
+                cell6.innerHTML = `<button onClick="cancelData(this)">Cancel</button>`;
 
 
                 var row = table.rows.length;
                 document.getElementById('order').innerHTML = row;
-
-               
+                /*
+                <a  href="destination.html" id="chec" onClick="updateDestination(this)">Update Destination</a>
+                update<input  type='checkbox' id='box'  onClick="updateDestination(this)">
+                */
 
             }
 
         })
 }
 
+
 function updateDestination(td) {
     row = td.parentElement.parentElement;
-
     var mart = row.cells[0].innerHTML;
     var id = mart;
     localStorage.setItem('idd', id);
 
+    var des = row.cells[3].innerHTML;
+    localStorage.setItem('dest', des);
+
+    if (des == 'ready for pickup' || des === 'transit') {
+
+        document.getElementById('show').style.display = 'block';
+
+        var form = document.getElementById('myDestination');
+
+        form.addEventListener('submit', sendData);
+
+        function sendData(e) {
+            e.preventDefault();
+
+            var destination = document.getElementById('myDestine').value;
+
+            var params = JSON.stringify({
+
+                "destination": destination,
+                "id": id
+            });
+
+            var val = params;
+
+            const XHR = new XMLHttpRequest();
+
+            XHR.open('PUT', 'https://web-app-senditb.herokuapp.com/parcel/' + id + '/destination', true);
+
+            XHR.onload = function () {
+
+                var out1 = this.responseText;
+
+                window.document.location = 'get.html'
+
+                console.log(out1);
+
+            };
+
+
+            XHR.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+            XHR.setRequestHeader('Method', 'PUT');
+
+
+            XHR.send(val);
+        }
+
+    }
+    else if (des === 'cancelled') {
+        alert('destination cannot be updated, order already cancelled');
+        window.document.location = 'get.html';
+    }
+    else {
+        alert('destination cannot be updated, order already delivered');
+        window.document.location = 'get.html';
+    }
+
 }
 
 
-function deleteData(td) {
+
+
+function cancelData(td) {
     row = td.parentElement.parentElement;
 
     var mart = row.cells[0].innerHTML;
@@ -59,25 +121,44 @@ function deleteData(td) {
 
     console.log(mart);
 
+    var status = 'cancelled';
 
+    var params = JSON.stringify({
 
-    var xhr = new XMLHttpRequest();
+        "status": status,
+        "id": id
 
-    xhr.open('DELETE', `https://web-app-senditb.herokuapp.com/parcel/${id}/cancel`);
-
-    xhr.addEventListener('load', function () {
-
-        alert('sucessfully deleted');
     });
 
-    xhr.addEventListener('error', function () {
-        console.log('error deleting message');
-    });
+    var val = params;
 
-    xhr.setRequestHeader('Content-Type', 'application/json;charset=utf-8');
+    if (row.cells[3].innerHTML == 'ready for pickup' || row.cells[3].innerHTML === 'On Transit') {
+
+        const XHR = new XMLHttpRequest();
+
+        XHR.open('PUT', 'https://web-app-senditb.herokuapp.com/parcel/' + id + '/status', true);
+        XHR.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        XHR.setRequestHeader('Method', 'PUT');
 
 
-    xhr.send();
+        XHR.onload = function () {
+
+            var out1 = this.responseText;
+            window.document.location = 'get.html';
+
+
+        };
+
+
+        XHR.send(val);
+    }
+    else if (row.cells[3].innerHTML === 'delivered') {
+        alert('cannot cancel order as its already delivered');
+        window.document.location = 'get.html';
+    } else {
+        alert('cannot cancel order as its already cancelled');
+        window.document.location = 'get.html';
+    }
 
 }
 

@@ -35,11 +35,14 @@
 
             }else{
                 
-                window.document.location = 'post.html';
+                window.document.location = 'get.html';
                 
                 console.log(data);
+                localStorage.setItem('value', data);
+                localStorage.setItem('mail', email);
+                /*
                 localStorage.setItem('token', JSON.stringify(data));
-                
+                */
             }    
         });
    

@@ -1,69 +1,129 @@
-var selectedRow = null;
+document.getElementById('sow').style.display = 'none';
 
 function getAllParcel() {
 
     fetch('https://web-app-senditb.herokuapp.com/parcel/getall')
-    .then(response => response.json())
-    .then((out) => {
-        for (var i in out) {
+        .then(response => response.json())
+        .then((out) => {
+            for (var i in out) {
 
-            var table = document.getElementById("head").getElementsByTagName("tbody")[0];
-            var newRow = table.insertRow(table.length);
-            cell1 = newRow.insertCell(0);
-            cell1.innerHTML = `${out[i]._id}`;
-            cell2 = newRow.insertCell(1);
-            cell2.innerHTML = `${out[i].destination}`;
-            cell3 = newRow.insertCell(2);
-            cell3.innerHTML = `${out[i].location}`;
-            cell4 = newRow.insertCell(3);
-            cell4.innerHTML = `${out[i].status}`;
-            cell5 = newRow.insertCell(4);
-            cell5.innerHTML = `<a  href="status.html" id="chec" onClick="updateStatus(this)">Update Status</a>`;
-            cell6 = newRow.insertCell(5);
-            cell6.innerHTML = `<button onClick="deleteData(this)">Delete</button>`;
+                var table = document.getElementById("head").getElementsByTagName("tbody")[0];
+                var newRow = table.insertRow(table.length);
+                cell1 = newRow.insertCell(0);
+                cell1.innerHTML = `${out[i]._id}`;
+                cell2 = newRow.insertCell(1);
+                cell2.innerHTML = `${out[i].destination}`;
+                cell3 = newRow.insertCell(2);
+                cell3.innerHTML = `${out[i].location}`;
+                cell4 = newRow.insertCell(3);
+                cell4.innerHTML = `${out[i].status}`;
+                cell5 = newRow.insertCell(4);
+                cell5.innerHTML = `<a id="chec" onClick="updateStatus(this)">Update Status</a>`;
+                cell6 = newRow.insertCell(5);
+                cell6.innerHTML = `<button onClick="deleteData(this)">Delete</button>`;
 
-        }
+            }
 
-    })
-}    
+        })
+}
 
-function updateStatus(td){
+function updateStatus(td) {
     row = td.parentElement.parentElement;
 
-    var mart =  row.cells[0].innerHTML;
-    var id = mart ;
-    localStorage.setItem('ids', id);
+    var mart = row.cells[0].innerHTML;
+    var id = mart;
+
+    var stat = row.cells[3].innerHTML
+
+    if (stat == 'ready for pickup' || stat === 'transit') {
+
+        document.getElementById('sow').style.display = 'block';
+
+        var form = document.getElementById('myStatus');
+
+        form.addEventListener('submit', sendData);
+
+        function sendData(e) {
+            e.preventDefault();
+
+            var status = document.getElementById('status').value;
+
+            var params = JSON.stringify({
+
+                "status": status,
+                "id": id
+
+            });
+
+            var val = params;
+
+            const XHR = new XMLHttpRequest();
+
+            XHR.open('PUT', 'https://web-app-senditb.herokuapp.com/parcel/' + id + '/status', true);
+            XHR.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+            XHR.setRequestHeader('Method', 'PUT');
+
+
+            XHR.onload = function () {
+
+                var out1 = this.responseText;
+                window.document.location = 'getall.html';
+
+                console.log(out1);
+                localStorage.setItem('status', out1.status);
+
+            };
+
+
+            XHR.send(val);
+        }
+
+    }
+    else if (stat === 'delivered') {
+        alert('cannot update status as its already delivered');
+        window.document.location = 'getall.html';
+    }
+    else {
+        alert('cannot update status as its already cancelled');
+        window.document.location = 'getall.html';
+    }
 
 }
 
 function deleteData(td) {
     row = td.parentElement.parentElement;
 
-    var mart =  row.cells[0].innerHTML;
-    var id = mart 
+    var mart = row.cells[0].innerHTML;
+    var id = mart
 
     console.log(mart);
-    
-   
-    var xhr = new XMLHttpRequest();
 
-    xhr.open('DELETE', `https://web-app-senditb.herokuapp.com/parcel/${id}/cancel`);
+    if (row.cells[3].innerHTML == 'delivered' || row.cells[3].innerHTML === 'cancelled') {
 
-    xhr.addEventListener('load', function () {
-        
-        console.log('sucessful');
-        alert('sucesfully deleted');
-    });
+        var xhr = new XMLHttpRequest();
 
-    xhr.addEventListener('error', function () {
-        console.log('error deleting message');
-    });
+        xhr.open('DELETE', `https://web-app-senditb.herokuapp.com/parcel/${id}/cancel`);
 
-    xhr.setRequestHeader('Content-Type', 'application/json;charset=utf-8');
+        xhr.addEventListener('load', function () {
 
-    
-    xhr.send();
-    
+            console.log('sucessful');
+            window.location.reload();
+        });
+
+        xhr.addEventListener('error', function () {
+            console.log('error deleting message');
+        });
+
+        xhr.setRequestHeader('Content-Type', 'application/json;charset=utf-8');
+
+
+        xhr.send();
+
+    } else {
+        alert('cannot be deleted, Order still in transit and not yet delivered');
+    }
+
+
 }
 
 
@@ -144,4 +204,4 @@ function getAllParcel (e) {
             cell6 = newRow.insertCell(5);
             cell6.innerHTML = `
                     <a onClick="onDelete(this)">Delete</a>`;
-*/            
+*/

@@ -9,17 +9,24 @@ function sendData(e) {
 
     var destination = document.getElementById('des').value;
     var location = document.getElementById('location').value;
+    /*
     var token = JSON.parse(localStorage.getItem('token'));
     var name = token.nama;
     var email = token.email;
-    var status = "On Transit";
+    */
+    var name = localStorage.getItem('value')
+    var email = localStorage.getItem('mail');
+    var status = "ready for pickup";
 
     var params = JSON.stringify({
         "destination": destination,
         "location": location,
         "status": status,
+        "name":name,
+        "email":email
+        /*
         "token": token,
-
+        */
 
     });
 
@@ -35,6 +42,7 @@ function sendData(e) {
             var display = document.getElementById('dis');
             window.document.location = 'get.html';
              display1.innerHTML = `Order successfully created ${data.name}`;
+
              localStorage.setItem('value', data.name);
              console.log(data.name);
             
@@ -52,9 +60,6 @@ function sendData(e) {
                  `           
  */
                  console.log(data);
-
-
-
 
 
         })

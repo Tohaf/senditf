@@ -6,7 +6,7 @@
     <meta http-equiv="https://web-app-senditb.herokuapp.com/parcel" content="text/plain">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sendit</title>
-<link rel="stylesheet" href="app.css"/>
+    <link rel="stylesheet" href="app.css" />
 </head>
 
 <body onload="event.preventDefault();getAllParcel()" class="dass">
@@ -15,13 +15,28 @@
     <table>
         <tr>
             <td>
-                <form  action="get.js" id="myForm" method="GET">
-                    
+
+
+                <br>
+                <a class="spec" href="index.html"> Logout </a>
+
+                <form action="status.js" id="myStatus" method="PUT">
+                    <fieldset id="sow">
+                        <label> New Status </label>
                         <br>
-                        <a href="index.html"> homepage </a>
-                
+                        <select id="status" name="status" required>
+                            <option value="transit"> transit</option>
+                            <option value="delivered"> delivered</option>
+                        </select>
+                        <br>
+                        <br>
+                        <button type=submit>submit</button>
+                    
+                    </fieldset>
                 </form>
-            
+
+
+
             </td>
             <table id='head'>
                 <thead>
@@ -40,13 +55,13 @@
             </table>
         </tr>
     </table>
-    
+
 
 
     <script src="getall.js">
 
     </script>
-    
+
     <div id="list">
 
     </div>
@@ -54,9 +69,3 @@
 </body>
 
 </html>
-
-
-
-
-
-

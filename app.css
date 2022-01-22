@@ -2,41 +2,160 @@
 
 * {
     
-    background-color: blue;
+   
     font-size: 30px;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    
+}
+#show{
+    width: 80%;
+    margin: auto;
+    background-color: cadetblue;
+    margin-bottom: 5%;
 
 }
-body{
-    text-align: center;
+
+#top{
+	width: 100%;
+	margin: auto;
+	padding: 20px 0;
+	align-items: center;
+	justify-content: space-between;
+    background-color: brown;
+    text-decoration: none;
+    
 }
+
+#top ul li{
+	list-style: none;
+	display: inline-block;
+	margin: 0 20px;
+	padding-right: 20px auto;
+    
+}
+
+#left ul li a{
+	
+	color: white;
+	font-weight: bold;
+    color: white;
+
+}
+
+.mage{
+    background-image: url(image.jpg);
+    padding-top: 14%;
+    padding-bottom: 14%;
+    margin-left: 14%;
+    margin-right: 14%;
+    margin-top: 1%;
+}
+
+.mage p{
+    margin-bottom: 5%;
+    font-size: 80px;
+
+}
+
+#footer{
+    background-color: brown;
+    width: 100%;
+    
+
+}
+
+#footerCon{
+    width: 100%;
+	margin: auto;
+	padding: 20px 0;
+	align-items: center;
+	justify-content: space-between;
+
+}
+
+#footerCon div{
+    width: 30%;
+	display: inline-block;
+    color: white;	
+}
+
 body >table{
     width: 100%;
 }
 .das{
     text-align: center;  
+    background-color: rgb(255, 166, 0);
+    width: 100%;
+    
+
+}
+
+.hed{
+    margin-left: 40%;
+    padding: auto;
+    font-size: 50px;
+    
+}
+
+body{
+    background-color: crimson;
+
 }
 
 form {
     text-align: center;
     align-self: auto;
-    
+    margin-top: 5%;
+    background-color: rgb(255, 166, 0);
+    border-style: outset;
+    margin-left: 30%;
+    margin-right: 30%;
+    padding-top: 5%;
+    border-radius: 5%;
+    padding-bottom: 1%;
     
 }
 label{
     display: block;
-
+    font-size: 50px;
 }
 input{
     display: block;
     margin: auto;
+    padding: 4%;
+    background-color: brown;
+    width: 92%;
 }
 
+.sub{
+    padding-left: 30%;
+    padding-right: 30%;
+}
 
 button{
     display: block;
     margin: auto;
-
+    border-radius: 10%;
+    background-color: brown;
+    padding: 1%;
 }
+
+a{
+    color: white;
+    text-decoration: none;
+    
+    
+}
+
+
+.lik{
+    
+    text-decoration: none;
+    background-color: crimson;
+}
+
 .diss{
     color: brown;
     padding: 30px,20px;

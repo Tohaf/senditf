@@ -133,3 +133,47 @@
                 
                 }
             }
+
+
+
+            body >table{
+                width: 100%;
+            }
+            .das{
+                text-align: center;  
+            }
+            
+            form {
+                text-align: center;
+                align-self: auto;
+                
+                
+            }
+            label{
+                display: block;
+            
+            }
+            input{
+                display: block;
+                margin: auto;
+            }
+            
+            
+            button{
+                display: block;
+                margin: auto;
+            
+            }
+            .diss{
+                color: brown;
+                padding: 30px,20px;
+                border-radius: 20%;
+            }
+            #display{
+                font-size: 50px;
+            }
+            th{
+                background-color: gray;
+                justify-items: auto;
+            }   
+            
