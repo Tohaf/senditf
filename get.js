@@ -1,4 +1,5 @@
 document.getElementById('show').style.display = 'none';
+document.getElementById('myDestination').style.display = 'none';
 
 
 function getAllParcel() {
@@ -15,18 +16,15 @@ function getAllParcel() {
             var trans = document.getElementById('transit');
             var deli = document.getElementById('deliver');
 
-
             const deliver = out.filter((item) => {
                 return item.status === 'delivered';
             })
             deli.innerHTML = deliver.length;
 
-
             const transit = out.filter((item) => {
                 return item.status === 'transit';
             })
             trans.innerHTML = transit.length;
-
             
             for (var i in out) {
 
@@ -55,7 +53,7 @@ function getAllParcel() {
                 var row = table.rows.length;
                 document.getElementById('order').innerHTML = row;
 
-        
+                
             }
 
         })
@@ -74,6 +72,8 @@ function updateDestination(td) {
     localStorage.setItem('dest', des);
 
     if (des == 'ready for pickup' || des === 'transit') {
+
+        document.getElementById('myDestination').style.display = 'block';
 
         document.getElementById('show').style.display = 'block';
 
@@ -171,10 +171,10 @@ function cancelData(td) {
         XHR.send(val);
     }
     else if (row.cells[3].innerHTML === 'delivered') {
-        alert('cannot cancel order as its already delivered');
+        alert('cannot cancel order as its already delivered/cancelled');
         window.document.location = 'get.html';
     } else {
-        alert('cannot cancel order as its already cancelled');
+        alert('cannot cancel order as its already delivered/cancelled');
         window.document.location = 'get.html';
     }
 

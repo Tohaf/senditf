@@ -1,4 +1,6 @@
 document.getElementById('sow').style.display = 'none';
+document.getElementById('myStatus').style.display = 'none';
+
 
 function getAllParcel() {
 
@@ -37,6 +39,7 @@ function updateStatus(td) {
 
     if (stat == 'ready for pickup' || stat === 'transit') {
 
+        document.getElementById('myStatus').style.display = 'block';
         document.getElementById('sow').style.display = 'block';
 
         var form = document.getElementById('myStatus');

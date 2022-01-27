@@ -18,7 +18,7 @@
 }
 
 #top{
-	width: 100%;
+	width: 100vw;
 	margin: auto;
 	padding: 20px 0;
 	align-items: center;
@@ -46,28 +46,28 @@
 
 .mage{
     background-image: url(image.jpg);
-    padding-top: 14%;
-    padding-bottom: 14%;
-    margin-left: 14%;
-    margin-right: 14%;
-    margin-top: 1%;
+    padding-top: 400px;
+    padding-bottom: 250px;
+    margin-left: 400px;
+    margin-right: 400px;
+    margin-top: 14px;
 }
 
 .mage p{
-    margin-bottom: 5%;
-    font-size: 80px;
+    margin-bottom: 88px;
+    font-size: 70px;
 
 }
 
 #footer{
     background-color: brown;
-    width: 100%;
+    width: 2380px;
     
 
 }
 
 #footerCon{
-    width: 100%;
+    width: 100vw;
 	margin: auto;
 	padding: 20px 0;
 	align-items: center;
@@ -76,7 +76,7 @@
 }
 
 #footerCon div{
-    width: 30%;
+    width: 50vh;
 	display: inline-block;
     color: white;	
 }
