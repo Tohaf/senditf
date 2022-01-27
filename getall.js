@@ -83,11 +83,11 @@ function updateStatus(td) {
 
     }
     else if (stat === 'delivered') {
-        alert('cannot update status as its already delivered');
+        alert('cannot update status as its already delivered/cancelled');
         window.document.location = 'getall.html';
     }
     else {
-        alert('cannot update status as its already cancelled');
+        alert('cannot update status as its already cancelled/delivered');
         window.document.location = 'getall.html';
     }
 
