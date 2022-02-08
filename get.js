@@ -77,6 +77,7 @@ function updateDestination(td) {
     var des = row.cells[5].innerHTML;
     localStorage.setItem('dest', des);
 
+/*    
     if (des == 'cancelled' || des === 'delivered') {
         alert('destination cannot be updated, order already cancelled/delivered');
     }
@@ -103,36 +104,8 @@ function updateDestination(td) {
     }else{
         window.document.location = 'get.html';
     }
-/*
-        var val = params;
+*/    
         
-        const XHR = new XMLHttpRequest();
-
-        XHR.open('PUT', 'https://web-app-senditb.herokuapp.com/parcel/' + id + '/destination', true);
-
-        XHR.onload = function () {
-
-            var out1 = this.responseText;
-
-            window.location.reload();
-
-            console.log(out1);
-
-        };
-
-        XHR.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-        XHR.setRequestHeader('Method', 'PUT');
-
-        XHR.send(val);
-        
-    }else{
-        window.location.reload();
-    }
-*/
-
-        
-    
-/*
 
     if (des == 'ready for pickup' || des === 'transit') {
 
@@ -159,7 +132,7 @@ function updateDestination(td) {
 
             const XHR = new XMLHttpRequest();
 
-            XHR.open('PUT', 'http://localhost:5000/parcel/' + id + '/destination', true);
+            XHR.open('PUT', 'https://web-app-senditb.herokuapp.com/parcel/' + id + '/destination', true);
 
             XHR.onload = function () {
 
@@ -180,6 +153,10 @@ function updateDestination(td) {
         }
 
     }
+    else if(document.getElementById('clear').clicked == true){
+        document.getElementById('show').style.display = 'none';
+        document.getElementById('myDestination').style.display = 'none';
+    }
     else if (des === 'cancelled') {
         alert('destination cannot be updated, order already cancelled');
         window.document.location = 'get.html';
@@ -188,7 +165,7 @@ function updateDestination(td) {
         alert('destination cannot be updated, order already delivered');
         window.document.location = 'get.html';
     }
-*/
+
 
 }
 
