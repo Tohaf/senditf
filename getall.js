@@ -17,12 +17,20 @@ function getAllParcel() {
                 cell2.innerHTML = `${out[i].destination}`;
                 cell3 = newRow.insertCell(2);
                 cell3.innerHTML = `${out[i].location}`;
+
                 cell4 = newRow.insertCell(3);
-                cell4.innerHTML = `${out[i].status}`;
+                cell4.innerHTML = `${out[i].phone}`;
+
                 cell5 = newRow.insertCell(4);
-                cell5.innerHTML = `<a id="chec" onClick="updateStatus(this)">Update Status</a>`;
+                cell5.innerHTML = `${out[i].recipient}`;
+
                 cell6 = newRow.insertCell(5);
-                cell6.innerHTML = `<button onClick="deleteData(this)">Delete</button>`;
+                cell6.innerHTML = `${out[i].status}`;
+
+                cell7 = newRow.insertCell(6);
+                cell7.innerHTML = `<a id="chec" onClick="updateStatus(this)">Update Status</a>`;
+                cell8 = newRow.insertCell(7);
+                cell8.innerHTML = `<button onClick="deleteData(this)">Delete</button>`;
 
             }
 
@@ -35,10 +43,10 @@ function updateStatus(td) {
     var mart = row.cells[0].innerHTML;
     var id = mart;
 
-    var stat = row.cells[3].innerHTML
+    var stat = row.cells[5].innerHTML
 
     if (stat == 'ready for pickup' || stat === 'transit') {
-
+        window.top
         document.getElementById('myStatus').style.display = 'block';
         document.getElementById('sow').style.display = 'block';
 
@@ -93,6 +101,8 @@ function updateStatus(td) {
 
 }
 
+
+
 function deleteData(td) {
     row = td.parentElement.parentElement;
 
@@ -101,7 +111,11 @@ function deleteData(td) {
 
     console.log(mart);
 
-    if (row.cells[3].innerHTML == 'delivered' || row.cells[3].innerHTML === 'cancelled') {
+    if (row.cells[5].innerHTML == 'transit' || row.cells[5].innerHTML === 'ready for pickup') {
+        alert('cannot be deleted, Order still in transit and not yet delivered');
+    } else if (confirm("are you sure you want to delete") == false) {
+        window.document.location = 'getall.html';
+    } else {
 
         var xhr = new XMLHttpRequest();
 
@@ -109,8 +123,9 @@ function deleteData(td) {
 
         xhr.addEventListener('load', function () {
 
-            console.log('sucessful');
             window.location.reload();
+            console.log('sucessful');
+
         });
 
         xhr.addEventListener('error', function () {
@@ -121,9 +136,6 @@ function deleteData(td) {
 
 
         xhr.send();
-
-    } else {
-        alert('cannot be deleted, Order still in transit and not yet delivered');
     }
 
 

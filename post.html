@@ -1,48 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-   
+
     <title>post request</title>
-    <link rel="stylesheet" href="app.css"/>
+    <link rel="stylesheet" href="app.css" />
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8tvIMg8No_Wwb17xupKnn6KR3OkazVU8
+    &libraries=places&callback=initMap">
+    </script>
 </head>
+
 <body>
     <div class="diss" id="diss">
-    
+
     </div>
-    
+
     <form action="post.js" class="forma" id="myForm" method="POST">
-       
+
         <br>
-        <div  class="set">
+        <div class="set">
+            <label for="phone"> phone number </label>
+            <input id="phone" type="text" name="phone" placeholder="(+234) must start with country code" required>
+            <br>
             <label for="destination"> destination</label>
             <input id="des" type="text" name="destination" required>
-    
-             <br>
-        
+            <br>
             <label for="location"> location </label>
             <input id="location" type="text" name="location" required>
-        
             <br>
-    
-        
-            <button type="submit" >post</button>
+            <label for="recipient"> Recipient Name </label>
+            <input id="recipient" type="text" name="recipient" required>
+            <br>
             
+            <button type="submit"> post </button>
+
         </div>
     </form>
-    
+
+    <script>
+
+        function phone1(){
+            var numbering = document.getElementById('phone').value;
+            var pone1 = /^[\+]\d{10,}$/;
+
+            if(numbering.match(pone1)){
+                return true;
+            }else{
+                alert("Not a valid phone number");
+                return false;
+            }
+
+        }
+
+       
+       function initMap(){
+           var autocomplete;
+           var automade;
+           autocomplete = new google.maps.places.Autocomplete((document.getElementById('des')), {
+               types:['geocode'],
+               
+           });
+           automade = new google.maps.places.Autocomplete((document.getElementById('location')), {
+               types:['geocode'],
+               
+           });
+           google.maps.event.addListener(autocomplete, 'place_changed', function(){
+               var near_place = autocomplete.getPlace();
+           });
+           google.maps.event.addListener(automade, 'place_changed', function(){
+               var near_place = automade.getPlace();
+           });
+       };
+    </script>
 
     <br>
-    
+
 
 
     <div id="dis">
-    
+
     </div>
-    
+
     <script src="post.js"></script>
-    
+
 
 </body>
-</html>
 
+</html>

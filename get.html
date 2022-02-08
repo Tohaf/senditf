@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SENDIT FRONTEND</title>
     <link rel="stylesheet" href="app.css"/>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8tvIMg8No_Wwb17xupKnn6KR3OkazVU8
+    &libraries=places&callback=initMap">
+    </script>
 </head>
 
 <body onload="event.preventDefault();getAllParcel()">
@@ -31,7 +34,7 @@
                                 <input id="myDestine" type="text" name="destination" required>
                                  <br>
                                  <br>
-                                <button type="submit" >submit</button>
+                                <button type="submit" >submit</button><li></li><span><button type="submit" id="clear" >cancel</button> </span></li>
                                 
                             </fieldset> 
                         </form>
@@ -46,6 +49,8 @@
                         <th>orderid</th>
                         <th>destination</th>
                         <th>location</th>
+                        <th>recipient</th>
+                        <th>phone</th>
                         <th>status</th>
                         <th>change destination</th>
                         <th>Cancel order</th>
@@ -60,14 +65,24 @@
         </tr>
     </table>
      
-    
     <div id="get">
-
     </div>
-
-    
-
     <script src="get.js"></script>
+    <script>
+        function initMap(){
+            var autocomplete;
+            
+            autocomplete = new google.maps.places.Autocomplete((document.getElementById('myDestine')), {
+                types:['geocode'],
+                
+            });
+           
+            google.maps.event.addListener(autocomplete, 'place_changed', function(){
+                var near_place = autocomplete.getPlace();
+            });
+            
+        };
+    </script>
 
 </body>
 

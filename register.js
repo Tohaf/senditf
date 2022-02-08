@@ -9,22 +9,27 @@ function sendData(event) {
     var namo = document.getElementById('namo').value;
     var nama = document.getElementById('nama').value;
     var email = document.getElementById('email').value;
+    var phone = document.getElementById('num').value;
+    var address = document.getElementById('address').value;
     var password = document.getElementById('password').value;
     var confirmPassword = document.getElementById('confirmPassword').value;
     const deta = document.getElementById('det');
     const dete = document.getElementById('dat');
-
+    var pone1 = /^[\+]\d{10,}$/;
 
     var params = JSON.stringify({
         nama,
         namo,
         password,
         email,
+        address,
+        phone,
         confirmPassword
     });
     
 
-    const result = fetch('https://web-app-senditb.herokuapp.com/admin/pass', {
+    if(phone.match(pone1)){
+        const result = fetch('https://web-app-senditb.herokuapp.com/admin/pass', {
         method: 'POST',
         body: (params),
         headers: {
@@ -35,11 +40,20 @@ function sendData(event) {
             
             if (data.status == 'error') {
                 deta.innerHTML = 'email already exsit/you already have an account kindly Login';
-            }else if(password != confirmPassword){
+            }
+            else if(password.length < 6){
+                alert('password should be greater than 6 caracter');
+            }
+            else if(password != confirmPassword){
                 deta.innerHTML= 'password and confirm Password are not the same'
             }
              else {
-                 
+
+                localStorage.setItem('value', nama);
+                localStorage.setItem('mail', email);
+
+                window.document.location = 'get.html';
+
                 deta.innerHTML = `
     
             <br>
@@ -54,13 +68,13 @@ function sendData(event) {
                 console.log(data);
             }
 
-
-
         })
 
+    }else{
+        alert('invalid phone number');
+    }
 
-
-
+    
 
     /*
         const XHR = new XMLHttpRequest();

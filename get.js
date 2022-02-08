@@ -1,5 +1,7 @@
 document.getElementById('show').style.display = 'none';
 document.getElementById('myDestination').style.display = 'none';
+document.getElementById('order').innerHTML = '0';
+
 
 
 function getAllParcel() {
@@ -25,15 +27,15 @@ function getAllParcel() {
                 return item.status === 'transit';
             })
             trans.innerHTML = transit.length;
-            
+
             for (var i in out) {
 
                 var output;
                 output += '<ul>' +
-                '<li>' + out[i].status + '</li>' +
-                '</ul>'
-                
-                
+                    '<li>' + out[i].status + '</li>' +
+                    '</ul>'
+
+
                 var table = document.getElementById("head").getElementsByTagName("tbody")[0];
                 var newRow = table.insertRow(table.length);
                 cell1 = newRow.insertCell(0);
@@ -43,17 +45,21 @@ function getAllParcel() {
                 cell3 = newRow.insertCell(2);
                 cell3.innerHTML = `${out[i].location}`;
                 cell4 = newRow.insertCell(3);
-                cell4.innerHTML = `${out[i].status}`;
+                cell4.innerHTML = `${out[i].recipient}`;
                 cell5 = newRow.insertCell(4);
-                cell5.innerHTML = `<a id="chec" onClick="updateDestination(this)">Update Destination</a>`;
+                cell5.innerHTML = `${out[i].phone}`;
                 cell6 = newRow.insertCell(5);
-                cell6.innerHTML = `<button onClick="cancelData(this)">Cancel</button>`;
+                cell6.innerHTML = `${out[i].status}`;
+                cell7 = newRow.insertCell(6);
+                cell7.innerHTML = `<a id="chec" onClick="updateDestination(this)">Update Destination</a>`;
+                cell8 = newRow.insertCell(7);
+                cell8.innerHTML = `<button onClick="cancelData(this)">Cancel</button>`;
 
 
                 var row = table.rows.length;
                 document.getElementById('order').innerHTML = row;
 
-                
+
             }
 
         })
@@ -68,8 +74,49 @@ function updateDestination(td) {
     var id = mart;
     localStorage.setItem('idd', id);
 
-    var des = row.cells[3].innerHTML;
+    var des = row.cells[5].innerHTML;
     localStorage.setItem('dest', des);
+
+    if (des == 'cancelled' || des === 'delivered') {
+        alert('destination cannot be updated, order already cancelled/delivered');
+    }
+    else {
+        var destination = prompt("enter new destination: ");
+
+        var params = JSON.stringify({
+
+            "destination": destination,
+            "id": id
+        });
+
+        var val = params;
+        
+        const XHR = new XMLHttpRequest();
+
+        XHR.open('PUT', 'https://web-app-senditb.herokuapp.com/parcel/' + id + '/destination', true);
+
+        XHR.onload = function () {
+
+            var out1 = this.responseText;
+
+            window.location.reload();
+
+            console.log(out1);
+
+        };
+
+
+        XHR.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        XHR.setRequestHeader('Method', 'PUT');
+
+
+        XHR.send(val);
+    }
+
+
+        
+    
+/*
 
     if (des == 'ready for pickup' || des === 'transit') {
 
@@ -96,7 +143,7 @@ function updateDestination(td) {
 
             const XHR = new XMLHttpRequest();
 
-            XHR.open('PUT', 'https://web-app-senditb.herokuapp.com/parcel/' + id + '/destination', true);
+            XHR.open('PUT', 'http://localhost:5000/parcel/' + id + '/destination', true);
 
             XHR.onload = function () {
 
@@ -125,6 +172,7 @@ function updateDestination(td) {
         alert('destination cannot be updated, order already delivered');
         window.document.location = 'get.html';
     }
+*/
 
 }
 
@@ -132,6 +180,7 @@ function updateDestination(td) {
 
 
 function cancelData(td) {
+
     row = td.parentElement.parentElement;
 
     var mart = row.cells[0].innerHTML;
@@ -141,42 +190,53 @@ function cancelData(td) {
 
     var status = 'cancelled';
 
-    var params = JSON.stringify({
 
-        "status": status,
-        "id": id
+    if (row.cells[5].innerHTML == 'delivered' || row.cells[5].innerHTML === 'cancelled') {
+        alert("order already delivered/cancelled");
 
-    });
-
-    var val = params;
-
-    if (row.cells[3].innerHTML == 'ready for pickup' || row.cells[3].innerHTML === 'On Transit') {
-
-        const XHR = new XMLHttpRequest();
-
-        XHR.open('PUT', 'https://web-app-senditb.herokuapp.com/parcel/' + id + '/status', true);
-        XHR.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-        XHR.setRequestHeader('Method', 'PUT');
-
-
-        XHR.onload = function () {
-
-            var out1 = this.responseText;
-            window.document.location = 'get.html';
-
-
-        };
-
-
-        XHR.send(val);
-    }
-    else if (row.cells[3].innerHTML === 'delivered') {
-        alert('cannot cancel order as its already delivered/cancelled');
-        window.document.location = 'get.html';
+    } else if (confirm("are you sure you want to cancel") == false) {
+        window.document.location = 'get.html'
     } else {
-        alert('cannot cancel order as its already delivered/cancelled');
-        window.document.location = 'get.html';
+        var params = JSON.stringify({
+
+            "status": status,
+            "id": id
+
+        });
+
+        var val = params;
+
+        if (row.cells[5].innerHTML == 'ready for pickup' || row.cells[5].innerHTML === 'transit') {
+
+            const XHR = new XMLHttpRequest();
+
+            XHR.open('PUT', 'https://web-app-senditb.herokuapp.com/parcel/' + id + '/status', true);
+            XHR.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+            XHR.setRequestHeader('Method', 'PUT');
+
+
+            XHR.onload = function () {
+
+                var out1 = this.responseText;
+                window.document.location = 'get.html';
+
+
+            };
+
+
+            XHR.send(val);
+        }
+        else if (row.cells[5].innerHTML === 'delivered') {
+            alert('cannot cancel order as its already delivered/cancelled');
+            window.document.location = 'get.html';
+        } else {
+            alert('cannot cancel order as its already delivered/cancelled');
+            window.document.location = 'get.html';
+        }
     }
+
+
+
 
 }
 
