@@ -80,7 +80,7 @@ function updateDestination(td) {
     if (des == 'cancelled' || des === 'delivered') {
         alert('destination cannot be updated, order already cancelled/delivered');
     }
-    else {
+    else if(prompt("enter new destination: ")) {
         var destination = prompt("enter new destination: ");
 
         var params = JSON.stringify({
@@ -111,6 +111,8 @@ function updateDestination(td) {
 
 
         XHR.send(val);
+    }else{
+        window.location.reload();
     }
 
 
@@ -192,7 +194,7 @@ function cancelData(td) {
 
 
     if (row.cells[5].innerHTML == 'delivered' || row.cells[5].innerHTML === 'cancelled') {
-        alert("order already delivered/cancelled");
+        alert("order has already delivered/cancelled");
 
     } else if (confirm("are you sure you want to cancel") == false) {
         window.document.location = 'get.html'
