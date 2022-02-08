@@ -46,7 +46,8 @@ function updateStatus(td) {
     var stat = row.cells[5].innerHTML
 
     if (stat == 'ready for pickup' || stat === 'transit') {
-        window.top
+        window.scrollTo({TOP: 0, behavior: 'smooth'});
+
         document.getElementById('myStatus').style.display = 'block';
         document.getElementById('sow').style.display = 'block';
 

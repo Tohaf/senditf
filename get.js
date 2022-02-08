@@ -108,6 +108,7 @@ function updateDestination(td) {
         
 
     if (des == 'ready for pickup' || des === 'transit') {
+        window.scrollTo({TOP: 0, behavior: 'smooth'});
 
         document.getElementById('myDestination').style.display = 'block';
 
