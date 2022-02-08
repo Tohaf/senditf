@@ -55,7 +55,4 @@ function sendData(e) {
         alert('invalid phone number');
     }
 
-   
-
-
 }

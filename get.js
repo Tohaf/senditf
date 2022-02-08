@@ -89,6 +89,21 @@ function updateDestination(td) {
             "id": id
         });
 
+        const result = fetch('https://web-app-senditb.herokuapp.com/parcel/' + id + '/destination',{
+            method: 'PUT',
+            body: (params),
+            headers:{
+                'Content-Type': 'application/json'
+            }    
+        }).then(response => response.json())
+        .then((data) => {
+            window.location.reload();
+            console.log(data);
+        })
+    }else{
+        window.document.location = 'get.html';
+    }
+/*
         var val = params;
         
         const XHR = new XMLHttpRequest();
@@ -99,7 +114,7 @@ function updateDestination(td) {
 
             var out1 = this.responseText;
 
-            alert('succesfully updated');
+            window.location.reload();
 
             console.log(out1);
 
@@ -108,12 +123,12 @@ function updateDestination(td) {
         XHR.setRequestHeader('Content-type', 'application/json; charset=utf-8');
         XHR.setRequestHeader('Method', 'PUT');
 
-
         XHR.send(val);
+        
     }else{
         window.location.reload();
     }
-
+*/
 
         
     
