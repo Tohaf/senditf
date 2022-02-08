@@ -99,12 +99,11 @@ function updateDestination(td) {
 
             var out1 = this.responseText;
 
-            window.location.reload();
+            alert('succesfully updated');
 
             console.log(out1);
 
         };
-
 
         XHR.setRequestHeader('Content-type', 'application/json; charset=utf-8');
         XHR.setRequestHeader('Method', 'PUT');
