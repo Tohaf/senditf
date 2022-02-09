@@ -81,9 +81,10 @@
     color: white;	
 }
 
-body >table{
+body > table{
     width: 100%;
 }
+
 .das{
     text-align: center;  
     background-color: rgb(255, 166, 0);
@@ -100,7 +101,7 @@ body >table{
 }
 
 body{
-    background-color: crimson;
+    background-color: rgb(20, 147, 220);
 
 }
 
@@ -168,3 +169,17 @@ th{
     background-color: gray;
     justify-items: auto;
 }   
+table,th,td{
+    border: 2px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.detail{
+    align-content: center;
+    background-color: blanchedalmond;
+}
+.sepa{
+    display: inline-flex;
+    align-content: space-between;
+}

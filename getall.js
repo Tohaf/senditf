@@ -28,7 +28,7 @@ function getAllParcel() {
                 cell6.innerHTML = `${out[i].status}`;
 
                 cell7 = newRow.insertCell(6);
-                cell7.innerHTML = `<a id="chec" onClick="updateStatus(this)">Update Status</a>`;
+                cell7.innerHTML = `<a id="chec" href="#top" onClick="updateStatus(this)">Update Status</a>`;
                 cell8 = newRow.insertCell(7);
                 cell8.innerHTML = `<button onClick="deleteData(this)">Delete</button>`;
 
@@ -46,7 +46,6 @@ function updateStatus(td) {
     var stat = row.cells[5].innerHTML
 
     if (stat == 'ready for pickup' || stat === 'transit') {
-        window.scrollTo({TOP: 0, behavior: 'smooth'});
 
         document.getElementById('myStatus').style.display = 'block';
         document.getElementById('sow').style.display = 'block';

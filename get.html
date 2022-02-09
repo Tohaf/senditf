@@ -21,7 +21,7 @@
     <table>
         <tr>
             <td>
-                <ul>
+                <ul class="detail">
                     <li>Total Number Of Orders: <span id="order"></span></li>
                     <li>Number Of Orders Delivered: <span id="deliver"></span></li>
                     <li> Number Of Orders On Transit:  <span id="transit"></span></li>
@@ -33,8 +33,11 @@
                                 <label for="myDestination"> New destination </label>
                                 <input id="myDestine" type="text" name="destination" required>
                                  <br>
-                                 <br>
-                                <button type="submit" >submit</button>
+                                 <div class="sepa">
+                                    <button type="submit" >submit</button>
+                                    <button type="submit" onclick="window.location='get.html'" >cancel</button>
+                                 </div>
+                                
                                 
                             </fieldset> 
                         </form>

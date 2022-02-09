@@ -51,7 +51,7 @@ function getAllParcel() {
                 cell6 = newRow.insertCell(5);
                 cell6.innerHTML = `${out[i].status}`;
                 cell7 = newRow.insertCell(6);
-                cell7.innerHTML = `<a id="chec" onClick="updateDestination(this)">Update Destination</a>`;
+                cell7.innerHTML = `<a id="chec" href="#top" onClick="updateDestination(this)">Update Destination</a>`;
                 cell8 = newRow.insertCell(7);
                 cell8.innerHTML = `<button onClick="cancelData(this)">Cancel</button>`;
 
@@ -108,7 +108,6 @@ function updateDestination(td) {
         
 
     if (des == 'ready for pickup' || des === 'transit') {
-        window.scrollTo({TOP: 0, behavior: 'smooth'});
 
         document.getElementById('myDestination').style.display = 'block';
 
@@ -153,10 +152,6 @@ function updateDestination(td) {
             XHR.send(val);
         }
 
-    }
-    else if(document.getElementById('clear').clicked == true){
-        document.getElementById('show').style.display = 'none';
-        document.getElementById('myDestination').style.display = 'none';
     }
     else if (des === 'cancelled') {
         alert('destination cannot be updated, order already cancelled');
