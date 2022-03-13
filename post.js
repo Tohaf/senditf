@@ -2,6 +2,19 @@ var pone1 = /^[\+]\d{10,}$/;
 var form = document.getElementById('myForm');
 var display1 = document.getElementById("diss");
 
+function phoneCheck(){
+    var phone = document.getElementById('phone').value;
+    var pone1 = /^[\+]\d{10,}$/;
+    var phoneCheck = document.getElementById('phoneCheck');
+
+    if(phone.match(pone1)){
+        phoneCheck.innerHTML = "";
+    }else{
+        phoneCheck.innerHTML = "phone format not valid";
+    }
+
+}
+
 form.addEventListener('submit', sendData);
 
 function sendData(e) {
@@ -28,7 +41,7 @@ function sendData(e) {
     });
 
     if(phone.match(pone1)){
-        const result = fetch('https://web-app-senditb.herokuapp.com/parcel', {
+        const result = fetch('http://localhost:5000/parcel', {
             method: 'POST',
             body: (params),
             headers: {

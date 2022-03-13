@@ -1,7 +1,7 @@
 document.getElementById('show').style.display = 'none';
 document.getElementById('myDestination').style.display = 'none';
 document.getElementById('order').innerHTML = '0';
-
+document.getElementById('getInner').innerHTML = "NO ENTRY YET";
 
 
 function getAllParcel() {
@@ -58,6 +58,10 @@ function getAllParcel() {
 
                 var row = table.rows.length;
                 document.getElementById('order').innerHTML = row;
+
+                if(row > 0){
+                    document.getElementById('getInner').innerHTML = "";
+                }
 
 
             }

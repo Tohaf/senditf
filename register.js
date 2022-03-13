@@ -3,6 +3,45 @@ var form = document.getElementById('mForm');
 
 form.addEventListener('submit', sendData);
 
+function detectEmail(){
+    var email = document.getElementById('email').value;
+    const vall = "^[a-zA-ZO\\d]+@[a-zA-ZO]+\\.[A-Za-z]+$";
+    const dis = document.getElementById('mail');
+
+    if(email.match(vall)){
+        dis.innerHTML = ""
+    }else{
+        dis.innerHTML = "Email not valid";
+    }
+
+}
+
+function checkPassword (){
+    var password = document.getElementById('password').value;
+    var confirmPassword = document.getElementById('confirmPassword').value;
+    var passwordSpace = document.getElementById('passwordSpace');
+
+    if(password === confirmPassword){
+        passwordSpace.innerHTML = ""
+    }else{
+        passwordSpace.innerHTML = "passwords not match";
+    }
+
+}
+
+function phoneCheck(){
+    var phone = document.getElementById('num').value;
+    var pone1 = /^[\+]\d{10,}$/;
+    var phoneCheck = document.getElementById('phoneCheck');
+
+    if(phone.match(pone1)){
+        phoneCheck.innerHTML = "";
+    }else{
+        phoneCheck.innerHTML = "phone format not valid";
+    }
+
+}
+
 function sendData(event) {
     event.preventDefault();
 
@@ -29,7 +68,7 @@ function sendData(event) {
     
 
     if(phone.match(pone1)){
-        const result = fetch('https://web-app-senditb.herokuapp.com/admin/pass', {
+        const result = fetch('http://localhost:5000/admin/pass', {
         method: 'POST',
         body: (params),
         headers: {

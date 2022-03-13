@@ -21,7 +21,8 @@
         <br>
         <div class="set">
             <label for="phone"> phone number </label>
-            <input id="phone" type="text" name="phone" placeholder="(+234) must start with country code" required>
+            <input onchange="phoneCheck()" id="phone" type="text" name="phone" placeholder="(+234) must start with country code" required>
+            <div id="phoneCheck"></div>
             <br>
             <label for="destination"> destination</label>
             <input id="des" type="text" name="destination" required>
