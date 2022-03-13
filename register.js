@@ -68,7 +68,7 @@ function sendData(event) {
     
 
     if(phone.match(pone1)){
-        const result = fetch('http://localhost:5000/admin/pass', {
+        const result = fetch('https://web-app-senditb.herokuapp.com/admin/pass', {
         method: 'POST',
         body: (params),
         headers: {
