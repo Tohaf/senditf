@@ -8,11 +8,14 @@ function getAllParcel() {
 
     var nameq = localStorage.getItem('value');
     var status = localStorage.getItem('status');
+    /*
+    var nameDisplay = localStorage.getItem('value1');
+    */
     document.getElementById('display').innerHTML = 'WELCOME ' + nameq;
 
     console.log(nameq);
 
-    fetch('https://web-app-senditb.herokuapp.com/parcel/:id/search?name=' + nameq)
+    fetch('https://web-app-senditb.herokuapp.com/api/v1/parcels/:id/search?name=' + nameq)
         .then(response => response.json())
         .then((out) => {
             var trans = document.getElementById('transit');
@@ -136,7 +139,7 @@ function updateDestination(td) {
 
             const XHR = new XMLHttpRequest();
 
-            XHR.open('PUT', 'https://web-app-senditb.herokuapp.com/parcel/' + id + '/destination', true);
+            XHR.open('PUT', 'https://web-app-senditb.herokuapp.com/api/v1/parcels/' + id + '/destination', true);
 
             XHR.onload = function () {
 
@@ -203,7 +206,7 @@ function cancelData(td) {
 
             const XHR = new XMLHttpRequest();
 
-            XHR.open('PUT', 'https://web-app-senditb.herokuapp.com/parcel/' + id + '/status', true);
+            XHR.open('PUT', 'https://web-app-senditb.herokuapp.com/api/v1/parcels/' + id + '/status', true);
             XHR.setRequestHeader('Content-type', 'application/json; charset=utf-8');
             XHR.setRequestHeader('Method', 'PUT');
 

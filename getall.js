@@ -4,7 +4,7 @@ document.getElementById('myStatus').style.display = 'none';
 
 function getAllParcel() {
 
-    fetch('https://web-app-senditb.herokuapp.com/parcel/getall')
+    fetch('https://web-app-senditb.herokuapp.com/api/v1/parcels')
         .then(response => response.json())
         .then((out) => {
             for (var i in out) {
@@ -70,7 +70,7 @@ function updateStatus(td) {
 
             const XHR = new XMLHttpRequest();
 
-            XHR.open('PUT', 'https://web-app-senditb.herokuapp.com/parcel/' + id + '/status', true);
+            XHR.open('PUT', 'https://web-app-senditb.herokuapp.com/api/v1/parcels/' + id + '/status', true);
             XHR.setRequestHeader('Content-type', 'application/json; charset=utf-8');
             XHR.setRequestHeader('Method', 'PUT');
 
@@ -119,7 +119,7 @@ function deleteData(td) {
 
         var xhr = new XMLHttpRequest();
 
-        xhr.open('DELETE', `https://web-app-senditb.herokuapp.com/parcel/${id}/cancel`);
+        xhr.open('DELETE', `https://web-app-senditb.herokuapp.com/api/v1/parcels/${id}/cancel`);
 
         xhr.addEventListener('load', function () {
 

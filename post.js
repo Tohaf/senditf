@@ -41,7 +41,7 @@ function sendData(e) {
     });
 
     if(phone.match(pone1)){
-        const result = fetch('https://web-app-senditb.herokuapp.com/parcel', {
+        const result = fetch('https://web-app-senditb.herokuapp.com/api/v1/parcels', {
             method: 'POST',
             body: (params),
             headers: {

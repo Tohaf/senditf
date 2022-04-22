@@ -26,7 +26,7 @@ function sendData(e) {
     if (dests == 'ready for pickup' || dests === 'transit') {
         const XHR = new XMLHttpRequest();
 
-        XHR.open('PUT', 'https://web-app-senditb.herokuapp.com/parcel/' + id + '/destination', true);
+        XHR.open('PUT', 'https://web-app-senditb.herokuapp.com/api/v1/parcels/' + id + '/destination', true);
 
         XHR.onload = function () {
 

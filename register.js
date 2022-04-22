@@ -68,7 +68,7 @@ function sendData(event) {
     
 
     if(phone.match(pone1)){
-        const result = fetch('https://web-app-senditb.herokuapp.com/admin/pass', {
+        const result = fetch('https://web-app-senditb.herokuapp.com/api/v1/auth/signup', {
         method: 'POST',
         body: (params),
         headers: {
@@ -80,6 +80,9 @@ function sendData(event) {
             if (data.status == 'error') {
                 deta.innerHTML = 'email already exsit/you already have an account kindly Login';
             }
+            else if(data.status === 400){
+                deta.innerHTML = "firstname already exist";
+            }
             else if(password.length < 6){
                 alert('password should be greater than 6 caracter');
             }
@@ -88,10 +91,10 @@ function sendData(event) {
             }
              else {
 
-                localStorage.setItem('value', nama);
+                localStorage.setItem('value1', nama);
                 localStorage.setItem('mail', email);
 
-                window.document.location = 'get.html';
+                window.document.location = 'login.html';
 
                 deta.innerHTML = `
     
