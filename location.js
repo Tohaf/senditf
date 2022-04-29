@@ -2,6 +2,8 @@ var form = document.getElementById('myLocation');
 
 var display = document.getElementById('locate');
 
+const token = localStorage.getItem('token');
+
 form.addEventListener('submit', sendData);
 
 function sendData(e) {
@@ -24,6 +26,8 @@ function sendData(e) {
     XHR.open('PUT', 'https://web-app-senditb.herokuapp.com/api/v1/parcels/'+id+'/presentLocation', true);
     XHR.setRequestHeader('Content-type', 'application/json; charset=utf-8');
     XHR.setRequestHeader('Method', 'PUT');
+    XHR.setRequestHeader('authorization', token);
+
 
 
     XHR.onload = function () { 

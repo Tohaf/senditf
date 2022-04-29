@@ -1,10 +1,17 @@
 document.getElementById('sow').style.display = 'none';
 document.getElementById('myStatus').style.display = 'none';
-
+var token = localStorage.getItem('token');
+console.log(token);
 
 function getAllParcel() {
 
-    fetch('https://web-app-senditb.herokuapp.com/api/v1/parcels')
+    fetch('https://web-app-senditb.herokuapp.com/api/v1/parcels', {
+        headers: {
+            
+            'authorization': token,
+
+        }
+    })
         .then(response => response.json())
         .then((out) => {
             for (var i in out) {
@@ -73,6 +80,8 @@ function updateStatus(td) {
             XHR.open('PUT', 'https://web-app-senditb.herokuapp.com/api/v1/parcels/' + id + '/status', true);
             XHR.setRequestHeader('Content-type', 'application/json; charset=utf-8');
             XHR.setRequestHeader('Method', 'PUT');
+            XHR.setRequestHeader('authorization', token);
+
 
 
             XHR.onload = function () {
@@ -133,6 +142,8 @@ function deleteData(td) {
         });
 
         xhr.setRequestHeader('Content-Type', 'application/json;charset=utf-8');
+        xhr.setRequestHeader('authorization', token);
+
 
 
         xhr.send();

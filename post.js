@@ -1,6 +1,8 @@
 var pone1 = /^[\+]\d{10,}$/;
 var form = document.getElementById('myForm');
 var display1 = document.getElementById("diss");
+var token = localStorage.getItem('token');
+console.log(token);
 
 function phoneCheck(){
     var phone = document.getElementById('phone').value;
@@ -37,7 +39,6 @@ function sendData(e) {
         "phone": phone,
         "email": email
 
-
     });
 
     if(phone.match(pone1)){
@@ -46,6 +47,7 @@ function sendData(e) {
             body: (params),
             headers: {
                 'Content-Type': 'application/json',
+                'authorization': token,
     
             }
         }).then(Response => Response.json())

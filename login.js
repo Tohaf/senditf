@@ -37,8 +37,9 @@
                 
                 window.document.location = 'get.html';
                 
-                console.log(data);
-                localStorage.setItem('value', data);
+                console.log(data.token);
+                localStorage.setItem('value', data.nama);
+                localStorage.setItem('token', data.token);
                 localStorage.setItem('mail', email);
                 /*
                 localStorage.setItem('token', JSON.stringify(data));
