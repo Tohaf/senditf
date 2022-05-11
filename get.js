@@ -18,7 +18,7 @@ function getAllParcel() {
 
     console.log(nameq);
 
-    fetch('https://web-app-senditb.herokuapp.com/api/v1/parcels/:id/search?name=' + nameq, {
+    fetch('https://web-app-senditb.herokuapp.com/api/v1/users/:id/parcels?name=' + nameq, {
         headers: {
             
             'authorization':  token,
